@@ -7,7 +7,9 @@
 export default function App () {
 
 }*/
-import './styles.css';
+import React from 'react';
+import '../css/styles.css';
+import CustomP from "./CustomP";
 
 const App = () => {
     return (
@@ -20,6 +22,7 @@ const App = () => {
                 <h3>Genial bienvenida al curso de React</h3>
                 <p>Se viene un desafío para ustedes de crear componentes</p>
             </div>
+            <CustomP />
         </>
     )
 }

@@ -1,9 +1,10 @@
 {
-  "name": "curso-ecla-1",
+  "name": "frontend-curso-ecla-1",
   "version": "1.0.0",
-  "description": "Curso ECLA Clase 1",
-  "main": "src/index.js",
+  "description": "FrontEnd React de Curso ECLA 1",
+  "main": "src/index.ts",
   "scripts": {
+    "ts": "tsc --init",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -12,9 +13,9 @@
   "author": "Pat Cornejo",
   "license": "ISC",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
@@ -29,6 +30,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/runtime": "^7.13.0"
+    "@babel/runtime": "^7.13.0",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "cross-env": "^7.0.3",
+    "typescript": "^4.9.3"
   }
 }
