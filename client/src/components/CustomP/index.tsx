@@ -4,7 +4,7 @@ export default () => {
     return (
         <>
             <div>
-                <p>Hola! Comenzaremos el desafío. <br/>
+                <p>Hola! Comenzaremos 09o0el desafío. <br/>
                     El objetivo es construir una Componente para manejar opciones de cadena inversa (reverse string).
                     Para esto, deberán crear lo siguiente:
                 </p>

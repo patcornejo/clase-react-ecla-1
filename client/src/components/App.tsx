@@ -7,11 +7,24 @@
 export default function App () {
 
 }*/
-import React from 'react';
-import '../css/styles.css';
+import React, {useState} from 'react';
+import '../css/styles.scss';
 import CustomP from "./CustomP";
+import NewStateComponent from "./hooks/NewStateComponent";
+import NewRefComponent from "./hooks/NewRefComponent";
+import NewRefComponentProps from "./hooks/NewRefComponentProps";
+import {IHistory} from "../../../server/interfaces/IHistory";
+import Result from "./hooks/Result";
+import ClassResut from "./hooks/ClassResult";
+import ClassResultRed from "./hooks/ClassResult/Red";
 
 const App = () => {
+    const [history, setHistory] = useState<IHistory[]>([]);
+
+    const handleChange = (hst: IHistory[]) => {
+        setHistory(hst)
+    }
+
     return (
         <>
             <div className="app-header">
@@ -23,6 +36,16 @@ const App = () => {
                 <p>Se viene un desafío para ustedes de crear componentes</p>
             </div>
             <CustomP />
+            {
+                // <NewStateComponent />
+                //<NewRefComponent />
+                //
+                //<Result history={history} color="black" />
+                //<Result history={history} color="red" />
+            }
+            <NewRefComponentProps handleChange={handleChange} />
+            <ClassResut history={history} />
+            <ClassResultRed history={history} />
         </>
     )
 }

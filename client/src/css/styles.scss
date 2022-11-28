@@ -1,0 +1,43 @@
+@import "vars";
+
+h3 {
+    text-align: left;
+}
+
+.app-header {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.app {
+    font-family: sans-serif;
+    text-align: left;
+}
+
+.form-new-component {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+    input {
+        height: 20px;
+        margin-bottom: $mb;
+    }
+
+    select {
+        height: 30px;
+        margin-bottom: $mb;
+    }
+
+    button {
+        height: 30px;
+    }
+}
+
+.mycolor {
+    color: black;
+
+    &.red {
+        color: red !important;
+    }
+}

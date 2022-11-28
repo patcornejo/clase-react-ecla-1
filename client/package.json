@@ -8,7 +8,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --init",
+    "eslint": "eslint"
   },
   "author": "Pat Cornejo",
   "license": "ISC",
@@ -34,7 +36,12 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.28.0",
+    "eslint-plugin-react": "^7.31.11",
+    "sass": "^1.56.1",
     "typescript": "^4.9.3"
   }
 }
