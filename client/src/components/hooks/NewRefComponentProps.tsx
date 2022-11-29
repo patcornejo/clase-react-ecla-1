@@ -2,11 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import {IHistory} from "../../../../server/interfaces/IHistory";
 
 interface INewRefComponentProps {
-    handleChange: (hst: IHistory[]) => void
+    handleChange: (hst: IHistory[]) => void,
+    options: string[]
 }
 
-const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({handleChange}) => {
-    const options = ["Full String", "Each Word", "Order"];
+const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({handleChange, options}) => {
     const inputRef = useRef<HTMLInputElement>();
     const selectRef = useRef<HTMLSelectElement>();
     const [history, setHistory] = useState<IHistory[]>([])
