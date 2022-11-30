@@ -1,5 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {IHistory} from "../../../../server/interfaces/IHistory";
+import AppContext from "../../contexts/AppContext";
+import Select from "../Select";
 
 interface INewRefComponentProps {
     handleChange: (hst: IHistory[]) => void,
@@ -7,6 +9,7 @@ interface INewRefComponentProps {
 }
 
 const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({handleChange, options}) => {
+    const appContext = useContext(AppContext)
     const inputRef = useRef<HTMLInputElement>();
     const selectRef = useRef<HTMLSelectElement>();
     const [history, setHistory] = useState<IHistory[]>([])
@@ -44,15 +47,7 @@ const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({h
         <>
             <form className="form-new-component" onSubmit={handleSubmit}>
                 <input ref={inputRef} placeholder="Ingresa un texto"/>
-                <select ref={selectRef} defaultValue="-1">
-                    <option disabled value="-1">Selecciona una opción</option>
-                    {
-                       /* options.map((opt, index) => {
-                            return ()
-                        })*/
-                        options.map((opt, i) => <option key={`option-${i}`}>{opt}</option>)
-                    }
-                </select>
+                <Select sRef={selectRef} options={options} defaultValue={appContext.defaultValue} />
                 <button type="submit">Resolver</button>
             </form>
         </>

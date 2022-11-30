@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useGetFetch} from "../../hooks/useFetch";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Outlet, Route, useNavigate} from "react-router-dom";
+import OptionDetail from "./OptionDetail";
+import AppContext from "../../contexts/AppContext";
+import app from "../../components/App";
+import Select from "../../components/Select";
 
 const Index: React.FunctionComponent = () => {
-    const {fetched, data} = useGetFetch('/api/configuration');
+    const appContext = useContext(AppContext)
+    const navigate = useNavigate();
+    const fetch = useGetFetch('/api/configuration');
+
+    const handleChange = (e) => {
+        const opts = fetch.data.options;
+        navigate(`/options/${opts.indexOf(e.target.value)}`)
+    }
+
+    const handleClick = () => {
+        appContext.setDefaultValue('Each Word')
+    }
 
     return (
         <>
@@ -11,16 +26,17 @@ const Index: React.FunctionComponent = () => {
                 <h1>Estoy en Options</h1>
                 <p>Estoy dentro de la sección Option</p>
                 {
-                    (fetched) ? <select defaultValue="-1">
-                        <option disabled value="-1">Selecciona una opción</option>
-                        {
-                            /* options.map((opt, index) => {
-                                 return ()
-                             })*/
-                            data.options.map((opt, i) => <option key={`option-${i}`}>{opt}</option>)
-                        }
-                    </select> : <p>Cargando...</p>
+                    (fetch.fetched) ?
+                        <Select
+                            handleChange={handleChange}
+                            options={fetch.data.options}
+                            defaultValue={appContext.defaultValue} />
+                         : <p>Cargando...</p>
                 }
+                <button onClick={handleClick}>Cambiar Default Value</button>
+                <div style={{marginTop: 50}}>
+                    <Outlet />
+                </div>
             </>
         </>
     )

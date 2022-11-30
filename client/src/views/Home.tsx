@@ -1,5 +1,5 @@
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../css/styles.scss';
 import CustomP from "../components/CustomP";
 import NewStateComponent from "../components/hooks/NewStateComponent";
@@ -12,8 +12,10 @@ import ClassResultRed from "../components/hooks/ClassResult/Red";
 import {IResConfiguration} from "@server/interfaces/IResConfiguration";
 import {useGetFetch} from "../hooks/useFetch";
 import {Link} from "react-router-dom";
+import AppContext from "../contexts/AppContext";
 
 const Home: React.FunctionComponent = () => {
+    const appContext = useContext(AppContext)
     const [history, setHistory] = useState<IHistory[]>([]);
     // const [options, setOptions] = useState<string[] | undefined>(undefined)
     // const fetch = useGetFetch('api/configuration');
@@ -48,6 +50,13 @@ const Home: React.FunctionComponent = () => {
                 else console.error("Error en la consulta")
             })()*!/
         }, [])*/
+
+    useEffect(() => {
+        if (fetched) {
+            console.log("Fetched")
+            appContext.setOptions(data.options);
+        }
+    }, [fetched])
 
 
     const handleChange = (hst: IHistory[]) => {
