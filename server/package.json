@@ -1,0 +1,27 @@
+{
+  "name": "clase-react-ecla-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "start": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/**/node_modules"
+    ]
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
+  }
+}

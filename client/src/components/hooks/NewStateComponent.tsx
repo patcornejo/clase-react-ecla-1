@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {IInputs} from "../../../../server/interfaces/IInputs";
-import {IHistory} from "../../../../server/interfaces/IHistory";
+import {FunctionComponent, useState} from 'react';
+import {IInputs} from "@server/interfaces/IInputs";
+import {IHistory} from "@server/interfaces/IHistory";
 
-const NewStateComponent: React.FunctionComponent = () => {
+const NewStateComponent: FunctionComponent = () => {
     const options = ["Full String", "Each Word", "Order"];
     const [inputs, setInputs] = useState<IInputs>({input: "", select: ""});
     const [history, setHistory] = useState<IHistory[]>([])

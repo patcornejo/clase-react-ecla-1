@@ -1,6 +1,6 @@
 import React from "react"
 
-export default () => {
+const CustomP: React.FunctionComponent = () => {
     return (
         <>
             <div>
@@ -37,3 +37,5 @@ export default () => {
         </>
     )
 }
+
+export default CustomP;

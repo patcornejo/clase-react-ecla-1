@@ -6,10 +6,6 @@ export default class ClassResultRed extends ClassResult {
         this.css = {color: 'red'}
     }
 
-    metodo () {
-
-    }
-
     render(): JSX.Element {
         this.metodo()
         return super.render();

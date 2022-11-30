@@ -1,15 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {IHistory} from "../../../../server/interfaces/IHistory";
+import React, {useContext, useEffect, useRef, useState} from 'react';
+import {IHistory} from "@server/interfaces/IHistory";
+import AppContext from "../../contexts/AppContext";
+import Select from "../Select";
 
 interface INewRefComponentProps {
-    handleChange: (hst: IHistory[]) => void
+    handleChange: (hst: IHistory[]) => void,
+    options: string[]
 }
 
-const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({handleChange}) => {
-    const options = ["Full String", "Each Word", "Order"];
+const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({handleChange, options}) => {
     const inputRef = useRef<HTMLInputElement>();
     const selectRef = useRef<HTMLSelectElement>();
     const [history, setHistory] = useState<IHistory[]>([])
+    const {defaultValue} = useContext(AppContext);
+    console.log(defaultValue)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,15 +48,7 @@ const NewRefComponentProps: React.FunctionComponent<INewRefComponentProps> = ({h
         <>
             <form className="form-new-component" onSubmit={handleSubmit}>
                 <input ref={inputRef} placeholder="Ingresa un texto"/>
-                <select ref={selectRef} defaultValue="-1">
-                    <option disabled value="-1">Selecciona una opción</option>
-                    {
-                       /* options.map((opt, index) => {
-                            return ()
-                        })*/
-                        options.map((opt, i) => <option key={`option-${i}`}>{opt}</option>)
-                    }
-                </select>
+                <Select sRef={selectRef} options={options} defaultValue={defaultValue} />
                 <button type="submit">Resolver</button>
             </form>
         </>
